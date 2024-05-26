@@ -1,0 +1,54 @@
+{
+  "name": "ai-chatbot-starter",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@mantine/core": "^5.10.5",
+    "@tabler/icons-react": "^2.9.0",
+    "@types/node": "18.15.0",
+    "@types/react": "18.0.28",
+    "@types/react-dom": "18.0.11",
+    "eslint": "8.36.0",
+    "eslint-config-next": "13.2.4",
+    "eventsource-parser": "^0.1.0",
+    "idb-keyval": "^6.2.0",
+    "jshashes": "^1.0.8",
+    "next": "13.2.4",
+    "next-http-proxy-middleware": "^1.2.5",
+    "openai": "^3.2.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-icons": "^4.8.0",
+    "react-intl": "^6.2.10",
+    "react-markdown": "^8.0.5",
+    "react-syntax-highlighter": "^15.5.0",
+    "remark-gfm": "^3.0.1",
+    "sentence-splitter": "^4.2.0",
+    "typescript": "4.9.5"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.9",
+    "@types/react-syntax-highlighter": "^15.5.6",
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.2.7"
+  }
+}

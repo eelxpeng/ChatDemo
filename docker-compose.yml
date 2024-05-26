@@ -1,0 +1,123 @@
+version: '3.6'
+
+services:
+  chatgpt:
+    build: chatbot-ui-new
+    ports:
+      - 8000:3000
+    environment:
+      - 'OPENAI_API_KEY='
+  # chat_server:
+  #   build: model_server
+  #   ports:
+  #     - 5001:5001
+  #     - 5002:5002
+  #   volumes:
+  #     - /mnt/efs/people/xiaopel/checkpoints:/data
+  #     - /home/ec2-user/production:/production
+  #   deploy:
+  #     resources:
+  #       reservations:
+  #         devices:
+  #         - driver: nvidia
+  #           device_ids: ['5', '6', '7']
+  #           capabilities: [gpu]
+
+  chat_server:
+    build: text-generation-inference
+    entrypoint: ["text-generation-launcher"]
+    command: [
+      "--model-id",
+      "/data/cwchat/xiaopel-26b-ga-cwchat-annot-oasst-v2-065a7b343c5942e499/release",
+      "--sharded",
+      "false",
+    ]
+    ports:
+      - 5002:80
+    volumes:
+      - /mnt/efs/people/xiaopel/checkpoints:/data
+      - /home/ec2-user/production:/production
+    deploy:
+      resources:
+        reservations:
+          devices:
+          - driver: nvidia
+            device_ids: ['6', '7']
+            capabilities: [gpu]
+
+  chat_server_m:
+    build: text-generation-inference
+    entrypoint: ["text-generation-launcher"]
+    command: [
+      "--model-id",
+      "/data/cwchat/xiaopel-7b8-cwchat-annot-oasst-v2-d3ade47411874f178659f/release/",
+      "--sharded",
+      "false",
+    ]
+    ports:
+      - 5001:80
+    volumes:
+      - /mnt/efs/people/xiaopel/checkpoints:/data
+      - /home/ec2-user/production:/production
+    deploy:
+      resources:
+        reservations:
+          devices:
+          - driver: nvidia
+            device_ids: ['5']
+            capabilities: [gpu]
+
+  # dummy_server:
+  #   build: dummy_server
+  #   ports:
+  #     - 8001:8001
+  #   volumes:
+  #     - ./data_volumn:/data
+  #   deploy:
+  #     resources:
+  #       reservations:
+  #         devices:
+  #         - driver: nvidia
+  #           device_ids: ['0']
+  #           capabilities: [gpu]
+
+
+  # chatgpt:
+  #   build: chat-with-gpt
+  #   working_dir: /app
+  #   volumes:
+  #     - ./data_volumn:/app/data
+  #   command: npm run start
+  #   ports:
+  #     - 3000:3000
+  #   environment:
+  #     - PORT=3000
+  #     - WEBAPP_PORT=3000
+
+  # tts_engine:
+  #   build: tts_engine
+  #   ports:
+  #     - 8002:8002
+  #   volumes:
+  #     - ./data_volumn:/data
+  #   deploy:
+  #     resources:
+  #       reservations:
+  #         devices:
+  #         - driver: nvidia
+  #           device_ids: ['0', '1']
+  #           capabilities: [gpu]
+
+  # speech2text_engine:
+  #   build: speech2text_engine
+  #   ports:
+  #     - 8003:8003
+  #   volumes:
+  #     - ./data_volumn:/data
+  #   deploy:
+  #     resources:
+  #       reservations:
+  #         devices:
+  #         - driver: nvidia
+  #           device_ids: ['0', '1', '2']
+  #           capabilities: [gpu]
