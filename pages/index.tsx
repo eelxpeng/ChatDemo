@@ -244,10 +244,10 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>CodeWhisperer Chat</title>
+        <title>Chat Demo</title>
         <meta
           name="description"
-          content="developed by CodeWhisperer team."
+          content="developed by Dr. Xiaopeng Li."
         />
         <meta
           name="viewport"

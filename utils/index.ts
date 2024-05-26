@@ -65,7 +65,7 @@ export const OpenAIStream = async (model: OpenAIModel, key: string, messages: Me
 
 export const OpenAIModelURL: Record<OpenAIModel, string> = {
   [OpenAIModel.GPT_3_5]: "http://chat_server_m:80/generate_stream",
-  [OpenAIModel.GPT_4]: "http://chat_server:80/generate_stream"
+  // [OpenAIModel.GPT_4]: "http://chat_server:80/generate_stream"
   // [OpenAIModel.GPT_4]: "GPT-4"
 };
 

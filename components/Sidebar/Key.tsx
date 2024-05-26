@@ -58,7 +58,7 @@ export const Key: FC<Props> = ({ apiKey, onApiKeyChange }) => {
     </div>
   ) : (
     <SidebarButton
-      text="CodeWhisperer API Key"
+      text="LLM Server API Key"
       icon={<IconKey size={16} />}
       onClick={() => setIsChanging(true)}
     />
